@@ -21,3 +21,7 @@ source_activate:
 # source: usage: source filename [arguments]
 # root@f056cbb7adcb:/src# source venv/bin/activate
 # (venv) root@f056cbb7adcb:/src# 
+
+npm_serveless_python_requirements:
+	npm install --save serverless-python-requirements
+# Docker Image: lambci/lambda:build-python3.7

@@ -65,7 +65,7 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
+  numpy:
     handler: handler.main
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
@@ -92,7 +92,7 @@ functions:
 #            detail:
 #              state:
 #                - pending
-      - cloudwatchLog: '/aws/lambda/hello'
+#      - cloudwatchLog: '/aws/lambda/hello'
 #      - cognitoUserPool:
 #          pool: MyUserPool
 #          trigger: PreSignUp
