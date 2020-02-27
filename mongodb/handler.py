@@ -1,24 +1,22 @@
-import json
+from pymongo import MongoClient
+import os
+
+def mongoCollection(connstr, db, collection):
+    client = MongoClient(connstr)
+    db = client[db]
+    return db[collection]
 
 
-def hello(event, context):
-    body = {
-        "message": "Go Serverless v1.0! Your function executed successfully!",
-        "input": event
-    }
+def main(event, context):
+    print(os.environ.get('MONGODB_CONN_STR'))
+    collection = mongoCollection(os.environ.get('MONGODB_CONN_STR'), 'smsinfo', 'transactions')
 
-    response = {
-        "statusCode": 200,
-        "body": json.dumps(body)
-    }
+    for _item in list(
+    enumerate(
+        collection.find({
+            "message.text": {'$regex': 'ALERT: You\'ve spent Rs.([0-9.]+)'}
+            }).sort([("message.date",1)]))):
+        print("message", _item[1])
 
-    return response
-
-    # Use this code if you don't use the http event with the LAMBDA-PROXY
-    # integration
-    """
-    return {
-        "message": "Go Serverless v1.0! Your function executed successfully!",
-        "event": event
-    }
-    """
+if __name__ == "__main__":
+    main('', '')
