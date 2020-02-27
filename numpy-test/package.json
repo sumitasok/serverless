@@ -1,0 +1,11 @@
+{
+  "name": "numpy-test",
+  "version": "1.0.0",
+  "description": "numpy test description",
+  "main": "index.js",
+  "scripts": {
+    "test": "python handler.py"
+  },
+  "author": "sumit m asok",
+  "license": "ISC"
+}
