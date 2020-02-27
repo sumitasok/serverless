@@ -6,3 +6,9 @@ services:
     build:
       context: .
       dockerfile: venv.Dockerfile
+
+  serverless:
+    image: serverless:latest
+    build:
+      context: .
+      dockerfile: serverless.Dockerfile
